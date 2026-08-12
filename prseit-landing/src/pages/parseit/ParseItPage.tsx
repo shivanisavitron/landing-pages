@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Footer from "../../components/Footer";
+import GetQuoteButton from "../../components/GetQuoteButton";
 
 function useInView(threshold = 0.2) {
   const ref = useRef<HTMLDivElement>(null);
@@ -27,12 +28,16 @@ function useInView(threshold = 0.2) {
 
 function Navbar() {
   return (
-    <header className="sticky top-0 z-30 border-b border-cream-200/70 bg-cream-50/90 backdrop-blur-md">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-coal-800/95 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
-        <div className="text-xl font-bold tracking-tight text-ink-900">
-          Parse<span className="text-brand-500">It</span>
+        <div className="text-xl font-bold tracking-tight text-white">
+          Parse<span className="text-brand-400">It</span>
         </div>
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-3 sm:gap-4">
+          <GetQuoteButton
+            product="ParseIt"
+            className="inline-flex items-center gap-1.5 rounded-full border border-brand-400 px-5 py-2.5 text-sm font-semibold text-brand-200 transition-colors hover:bg-white/10"
+          />
           <a
             href="https://doculens-dev.savitron.ai/login"
             target="_blank"
@@ -308,7 +313,7 @@ function FlowNode({
 
 function FlowArrow() {
   return (
-    <span className="text-brand-300" aria-hidden="true">
+    <span className="text-brand-200" aria-hidden="true">
       <span className="block sm:hidden">&darr;</span>
       <span className="hidden sm:block">&rarr;</span>
     </span>

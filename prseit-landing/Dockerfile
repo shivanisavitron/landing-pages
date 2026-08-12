@@ -2,6 +2,12 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 
+# Vite inlines VITE_* env vars into the static bundle at build time, so this
+# must be passed as a build arg — setting it at container runtime would do
+# nothing, since by then the JS is already built.
+ARG VITE_WEB3FORMS_ACCESS_KEY
+ENV VITE_WEB3FORMS_ACCESS_KEY=$VITE_WEB3FORMS_ACCESS_KEY
+
 COPY package.json package-lock.json ./
 RUN npm ci
 

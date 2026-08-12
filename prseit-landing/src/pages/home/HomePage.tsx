@@ -28,10 +28,10 @@ function useInView<T extends HTMLElement>(threshold = 0.2) {
 
 function Navbar() {
   return (
-    <header className="sticky top-0 z-30 border-b border-cream-200/70 bg-cream-50/90 backdrop-blur-md">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-coal-800/95 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
         <img src="/LogoSavitron-transparent.png" alt="Savitron.ai" className="h-8 w-auto" />
-        <span className="hidden text-xs font-bold uppercase tracking-[0.16em] text-neutral-500 sm:inline">
+        <span className="hidden text-xs font-bold uppercase tracking-[0.16em] text-gold-500 sm:inline">
           Product Hub
         </span>
       </div>
