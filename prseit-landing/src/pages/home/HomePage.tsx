@@ -30,9 +30,7 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-30 border-b border-cream-200/70 bg-cream-50/90 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
-        <div className="text-xl font-bold tracking-tight text-neutral-900">
-          Savitron<span className="text-gold-500">.ai</span>
-        </div>
+        <img src="/LogoSavitron-transparent.png" alt="Savitron.ai" className="h-8 w-auto" />
         <span className="hidden text-xs font-bold uppercase tracking-[0.16em] text-neutral-500 sm:inline">
           Product Hub
         </span>

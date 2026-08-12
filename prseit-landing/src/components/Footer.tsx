@@ -1,17 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-function SunIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className}>
-      <path d="M7 15a6 6 0 1 0 8.5-8.5A7 7 0 1 1 7 15Z" fill="currentColor" />
-      <g stroke="currentColor" strokeWidth="1.3" strokeLinecap="round">
-        <path d="M9.2 3.2 10 5.1M4.6 5.8l1.6 1.4M2.3 10.2h2.2M13.4 2l-.6 2M16.6 3.6l-1.3 1.7" />
-      </g>
-    </svg>
-  );
-}
-
 function LinkedInIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
@@ -119,10 +108,8 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <div className="flex items-center gap-2 text-lg font-bold">
-              <SunIcon className="h-6 w-6 text-gold-400" />
-              <span className="text-gold-400">Savitron.ai</span>
-            </div>
+            <img src="/LogoSavitron-transparent.png" alt="Savitron.ai" className="h-9 w-auto" />
+
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
               AI and Business Performance Accelerator &mdash; combining domain
               expertise, full-stack AI and cloud engineering to deliver
@@ -230,15 +217,9 @@ function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <PhoneIcon className="h-4 w-4 shrink-0 text-gold-500" />
-                <span>
-                  <a href="tel:+919916600370" className="transition-colors hover:text-gold-400">
-                    +91 99166 00370
-                  </a>
-                  <span className="mx-1.5 text-white/30">|</span>
-                  <a href="tel:+917838136381" className="transition-colors hover:text-gold-400">
-                    +91 78381 36381
-                  </a>
-                </span>
+                <a href="tel:+919916600370" className="transition-colors hover:text-gold-400">
+                  +91 99166 00370
+                </a>
               </div>
             </div>
           </div>
