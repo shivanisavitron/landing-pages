@@ -61,11 +61,11 @@ function QuoteForm({ product }: { product: "ParseIt" | "Atithi" }) {
 
   return (
     <div id="quote-form" className="mx-auto w-full max-w-lg scroll-mt-28">
-      <div className="rounded-2xl border border-cream-200 bg-white p-6 shadow-card sm:p-8">
+      <div className="rounded-2xl border border-cream-200 bg-white p-5 shadow-card sm:p-6">
         {status === "sent" ? (
-          <div className="py-4 text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-              <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
+          <div className="py-1 text-center">
+            <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+              <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
                 <path
                   d="M5 13l4.5 4.5L19 8"
                   stroke="currentColor"
@@ -75,36 +75,36 @@ function QuoteForm({ product }: { product: "ParseIt" | "Atithi" }) {
                 />
               </svg>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-ink-900">
+            <h3 className="mt-3 text-base font-bold text-ink-900">
               Your query has been submitted
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-ink-700/60">
+            <p className="mt-1.5 text-xs leading-relaxed text-ink-700/60">
               Our team will contact you soon.
             </p>
             <button
               type="button"
               onClick={resetForm}
-              className="mt-6 w-full rounded-full bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
+              className="mt-4 w-full rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
             >
               Send Another Request
             </button>
           </div>
         ) : (
           <>
-            <h2 className="text-lg font-bold text-ink-900">Request a Quote</h2>
-            <p className="mt-1 text-sm leading-relaxed text-ink-700/60">
+            <h2 className="text-base font-bold text-ink-900">Request a Quote</h2>
+            <p className="mt-1 text-xs leading-relaxed text-ink-700/60">
               Tell us a bit about what you need for {product} &mdash; we&apos;ll get back to
               you by email.
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+            <form onSubmit={handleSubmit} className="mt-4 space-y-2.5">
               <FormField label="Name">
                 <input
                   required
                   type="text"
                   value={form.name}
                   onChange={updateField("name")}
-                  className="mt-1 w-full rounded-lg border border-cream-200 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-brand-400"
+                  className="mt-1 w-full rounded-lg border border-cream-200 px-3 py-1.5 text-sm text-ink-900 outline-none transition-colors focus:border-brand-400"
                 />
               </FormField>
               <FormField label="Email">
@@ -113,7 +113,7 @@ function QuoteForm({ product }: { product: "ParseIt" | "Atithi" }) {
                   type="email"
                   value={form.email}
                   onChange={updateField("email")}
-                  className="mt-1 w-full rounded-lg border border-cream-200 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-brand-400"
+                  className="mt-1 w-full rounded-lg border border-cream-200 px-3 py-1.5 text-sm text-ink-900 outline-none transition-colors focus:border-brand-400"
                 />
               </FormField>
               <FormField label="Phone Number">
@@ -122,20 +122,20 @@ function QuoteForm({ product }: { product: "ParseIt" | "Atithi" }) {
                   type="tel"
                   value={form.phone}
                   onChange={updateField("phone")}
-                  className="mt-1 w-full rounded-lg border border-cream-200 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-brand-400"
+                  className="mt-1 w-full rounded-lg border border-cream-200 px-3 py-1.5 text-sm text-ink-900 outline-none transition-colors focus:border-brand-400"
                 />
               </FormField>
               <FormField label="Description">
                 <textarea
-                  rows={4}
+                  rows={2}
                   value={form.description}
                   onChange={updateField("description")}
-                  className="mt-1 w-full resize-none rounded-lg border border-cream-200 px-3.5 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-brand-400"
+                  className="mt-1 w-full resize-none rounded-lg border border-cream-200 px-3 py-1.5 text-sm text-ink-900 outline-none transition-colors focus:border-brand-400"
                 />
               </FormField>
 
               {status === "error" && (
-                <p className="text-sm font-medium text-rose-500">
+                <p className="text-xs font-medium text-rose-500">
                   Something went wrong sending your request. Please try again, or email us
                   directly at {RECIPIENT_EMAIL}.
                 </p>
@@ -144,7 +144,7 @@ function QuoteForm({ product }: { product: "ParseIt" | "Atithi" }) {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full rounded-full bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-600 disabled:opacity-60"
+                className="w-full rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-600 disabled:opacity-60"
               >
                 {status === "sending" ? "Sending…" : "Submit"}
               </button>

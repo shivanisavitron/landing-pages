@@ -169,10 +169,12 @@ function Footer() {
             <FooterHeading>Our Products</FooterHeading>
             <ul className="mt-4 space-y-3">
               <li>
-                <FooterLink href="https://doculens.savitron.ai">DocuLens</FooterLink>
+                <FooterLink href="/parseit" internal>
+                  ParseIt
+                </FooterLink>
               </li>
               <li>
-                <FooterLink href="https://savitron.ai/datamasseur">DataMasseur</FooterLink>
+                <FooterLink href="#">Mold</FooterLink>
               </li>
               <li>
                 <FooterLink href="https://savitron.ai/amp">AMP</FooterLink>

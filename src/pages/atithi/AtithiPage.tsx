@@ -35,12 +35,6 @@ function Navbar() {
         </div>
         <nav className="flex items-center gap-3 sm:gap-4">
           <a
-            href="#quote-form"
-            className="inline-flex items-center gap-1.5 rounded-full border border-brand-400 px-5 py-2.5 text-sm font-semibold text-brand-200 transition-colors hover:bg-white/10"
-          >
-            Get Quote
-          </a>
-          <a
             href="#"
             className="inline-flex items-center gap-1.5 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-600"
           >
