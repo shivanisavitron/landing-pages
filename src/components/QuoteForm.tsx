@@ -21,7 +21,7 @@ function FormField({ label, children }: { label: string; children: ReactNode }) 
   );
 }
 
-function QuoteForm({ product }: { product: "ParseIt" | "Atithi" }) {
+function QuoteForm({ product }: { product: "ParseIt" | "Atithi" | "Mold" }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
 

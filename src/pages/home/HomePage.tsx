@@ -90,6 +90,25 @@ const PRODUCTS: ProductEntry[] = [
       </svg>
     ),
   },
+  {
+    name: "Mo",
+    accent: "ld",
+    slug: "mold",
+    tagline: "Data Validation",
+    description:
+      "Upload a Master Scheme CSV and a Sale Sheet CSV — Mold validates every Sale row against the Master data and stores only the exceptions.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
+        <path
+          d="M4 4h16v6H4V4Zm0 10h16v6H4v-6Z"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+        />
+        <path d="M8 17.5 9.7 19.2 13 15.9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
 ];
 
 function ProductCard({ product, index }: { product: ProductEntry; index: number }) {

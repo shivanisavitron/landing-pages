@@ -174,7 +174,9 @@ function Footer() {
                 </FooterLink>
               </li>
               <li>
-                <FooterLink href="#">Mold</FooterLink>
+                <FooterLink href="/mold" internal>
+                  Mold
+                </FooterLink>
               </li>
               <li>
                 <FooterLink href="https://savitron.ai/amp">AMP</FooterLink>
