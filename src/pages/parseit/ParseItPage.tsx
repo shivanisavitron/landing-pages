@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Footer from "../../components/Footer";
-import GetQuoteButton from "../../components/GetQuoteButton";
+import QuoteForm from "../../components/QuoteForm";
 
 function useInView(threshold = 0.2) {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,12 +34,14 @@ function Navbar() {
           Parse<span className="text-brand-400">It</span>
         </div>
         <nav className="flex items-center gap-3 sm:gap-4">
-          <GetQuoteButton
-            product="ParseIt"
-            className="inline-flex items-center gap-1.5 rounded-full border border-brand-400 px-5 py-2.5 text-sm font-semibold text-brand-200 transition-colors hover:bg-white/10"
-          />
           <a
-            href="https://doculens-dev.savitron.ai/login"
+            href="#quote-form"
+            className="inline-flex items-center gap-1.5 rounded-full border border-brand-400 px-5 py-2.5 text-sm font-semibold text-brand-200 transition-colors hover:bg-white/10"
+          >
+            Get Quote
+          </a>
+          <a
+            href="https://parseit-dev.savitron.ai/login"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-600"
@@ -50,172 +52,6 @@ function Navbar() {
         </nav>
       </div>
     </header>
-  );
-}
-
-function FloatingCard({
-  title,
-  status,
-  tone,
-  className,
-}: {
-  title: string;
-  status: string;
-  tone: "green" | "blue" | "amber";
-  className: string;
-}) {
-  const dotColor = {
-    green: "bg-emerald-500",
-    blue: "bg-brand-500",
-    amber: "bg-amber-500",
-  }[tone];
-
-  return (
-    <div
-      className={`absolute z-20 hidden w-44 rounded-xl border border-cream-200 bg-white p-3.5 shadow-floating sm:block ${className}`}
-    >
-      <div className="text-[11px] font-semibold text-ink-900">{title}</div>
-      <div className="mt-1.5 flex items-center gap-1.5">
-        <span className={`h-1.5 w-1.5 rounded-full ${dotColor}`} />
-        <span className="text-xs text-ink-700/70">{status}</span>
-      </div>
-    </div>
-  );
-}
-
-function WorkflowStage({
-  icon,
-  label,
-  sublabel,
-  tone,
-}: {
-  icon: ReactNode;
-  label: string;
-  sublabel: string;
-  tone: "neutral" | "blue" | "amber" | "green";
-}) {
-  const toneClasses = {
-    neutral: { badge: "bg-cream-100 text-ink-700/60", text: "text-ink-700/50" },
-    blue: { badge: "bg-brand-50 text-brand-600", text: "text-brand-600" },
-    amber: { badge: "bg-amber-50 text-amber-600", text: "text-amber-600" },
-    green: { badge: "bg-emerald-50 text-emerald-600", text: "text-emerald-600" },
-  }[tone];
-
-  return (
-    <div className="flex flex-1 flex-col items-center gap-2 text-center">
-      <span
-        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${toneClasses.badge}`}
-      >
-        {icon}
-      </span>
-      <div>
-        <div className="text-xs font-bold text-ink-900">{label}</div>
-        <div className={`text-[11px] font-medium ${toneClasses.text}`}>{sublabel}</div>
-      </div>
-    </div>
-  );
-}
-
-function StageArrow() {
-  return (
-    <div className="flex items-center justify-center text-brand-200" aria-hidden="true">
-      <span className="block py-1 sm:hidden">&darr;</span>
-      <span className="hidden px-1 sm:block">&rarr;</span>
-    </div>
-  );
-}
-
-function WorkflowVisual() {
-  return (
-    <div className="mx-auto w-full max-w-lg">
-      <div className="relative">
-        <FloatingCard
-          title="Rule Engine"
-          status="Matched"
-          tone="green"
-          className="-left-4 -top-14 rotate-[-3deg] lg:-left-12"
-        />
-        <FloatingCard
-          title="LLM Fallback"
-          status="Available"
-          tone="blue"
-          className="-right-4 -top-14 rotate-[2deg] lg:-right-12"
-        />
-
-        <div className="relative z-10 overflow-hidden rounded-2xl border border-cream-200 bg-white shadow-card">
-          <div className="flex items-center justify-between border-b border-cream-200 px-5 py-4">
-            <div className="text-sm font-bold text-ink-900">
-              Parse<span className="text-brand-500">It</span>
-            </div>
-            <div className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              <span className="text-xs font-medium text-emerald-700">Ready</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 border-b border-cream-100 px-5 py-3.5 text-xs font-medium text-ink-700/70">
-            <MiniFileIcon className="h-3.5 w-3.5 text-brand-500" />
-            Invoice_2026_0812.pdf
-          </div>
-
-          <div className="flex flex-col gap-5 px-5 py-7 sm:flex-row sm:items-center sm:justify-between sm:gap-1">
-            <WorkflowStage
-              icon={<MiniFileIcon className="h-4 w-4" />}
-              label="PDF"
-              sublabel="Uploaded"
-              tone="neutral"
-            />
-            <StageArrow />
-            <WorkflowStage
-              icon={
-                <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4">
-                  <path
-                    d="M3 4h10M3 8h10M3 12h6"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              }
-              label="Extracted Fields"
-              sublabel="Rules matched"
-              tone="blue"
-            />
-            <StageArrow />
-            <WorkflowStage
-              icon={
-                <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4">
-                  <path
-                    d="M1 8s2.5-4.5 7-4.5S15 8 15 8s-2.5 4.5-7 4.5S1 8 1 8Z"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  />
-                  <circle cx="8" cy="8" r="1.6" fill="currentColor" />
-                </svg>
-              }
-              label="Human Review"
-              sublabel="In progress"
-              tone="amber"
-            />
-            <StageArrow />
-            <WorkflowStage
-              icon={<MiniCheckIcon className="h-4 w-4" />}
-              label="Approved Data"
-              sublabel="Exported"
-              tone="green"
-            />
-          </div>
-
-          <div className="border-t border-cream-200 bg-cream-50 px-5 py-3 text-center text-xs font-semibold text-ink-700/70">
-            Vendor: ABC Corp &middot; Invoice No. INV-0182 &middot; Total &#8377;84,500
-          </div>
-        </div>
-      </div>
-
-      <p className="mt-8 text-center text-sm font-medium text-ink-700/60">
-        Rules first. AI when needed. Humans always in control.
-      </p>
-    </div>
   );
 }
 
@@ -238,19 +74,6 @@ function MiniCheckIcon({ className }: { className?: string }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>
-  );
-}
-
-function MiniFileIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" className={className}>
-      <path
-        d="M3 1.5h6.5L13 5v9.5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-12a1 1 0 0 1 1-1Z"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-      <path d="M9.5 1.5V5H13" stroke="currentColor" strokeWidth="1.2" />
     </svg>
   );
 }
@@ -526,7 +349,7 @@ function ParseItPage() {
 
             <div className="mt-7 flex flex-col items-center gap-3.5 sm:flex-row lg:justify-start">
               <a
-                href="https://doculens-dev.savitron.ai/login"
+                href="https://parseit-dev.savitron.ai/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-500 px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-600 sm:w-auto"
@@ -551,7 +374,7 @@ function ParseItPage() {
                 : "translate-x-10 opacity-0"
             }`}
           >
-            <WorkflowVisual />
+            <QuoteForm product="ParseIt" />
           </div>
         </main>
       </div>

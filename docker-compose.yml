@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: savitron-web
+    ports:
+      - "2252:80"
+    environment:
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_SECURE: ${SMTP_SECURE}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      QUOTE_RECIPIENT: ${QUOTE_RECIPIENT}
+      ZOHO_XNQSJSDP: ${ZOHO_XNQSJSDP}
+      ZOHO_XMIWTLD: ${ZOHO_XMIWTLD}
+    restart: unless-stopped
