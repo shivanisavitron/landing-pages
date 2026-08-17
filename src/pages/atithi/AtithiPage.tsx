@@ -35,7 +35,9 @@ function Navbar() {
         </div>
         <nav className="flex items-center gap-3 sm:gap-4">
           <a
-            href="#"
+            href="https://atithi-dev.savitron.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-600"
           >
             Get Started
@@ -211,7 +213,7 @@ function HowItWorks() {
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-5 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
           <StepItem
             num="01"
             title="Record"
@@ -235,6 +237,12 @@ function HowItWorks() {
             title="Understand"
             description="Understand your business through reports and financial insights."
             from="right"
+          />
+          <StepItem
+            num="05"
+            title="Bookkeep with AI"
+            description="AI auto-categorizes transactions and flags anomalies, keeping the books accurate with minimal manual entry."
+            from="left"
           />
         </div>
 
@@ -314,7 +322,9 @@ function AtithiPage() {
 
             <div className="mt-8 flex flex-col items-center gap-3.5 sm:flex-row lg:justify-start">
               <a
-                href="#"
+                href="https://atithi-dev.savitron.ai/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-500 px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-600 sm:w-auto"
               >
                 Get Started
