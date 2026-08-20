@@ -29,17 +29,47 @@ const transporter = nodemailer.createTransport({
 // source and can be rotated without a code change.
 const ZOHO_WEBTOLEAD_URL = "https://crm.zoho.in/crm/WebToLeadForm";
 
-async function submitToZohoLead({ name, email, phone, description }) {
+// Each product has its own generated Web-to-Lead form in Zoho, so each has
+// its own xnQsjsdp/xmIwtLD pair plus the Title ("Designation") value that
+// form hardcodes. These identify which generated form a submission routes
+// to — they are not API credentials, and they ship publicly in the browser
+// form Zoho generates, so they live inline here. Products without a
+// dedicated form fall back to the shared ZOHO_XNQSJSDP/ZOHO_XMIWTLD pair.
+const ZOHO_PRODUCT_FORMS = {
+  // "Parseit Leads" form.
+  ParseIt: {
+    xnQsjsdp: "23e9698cdd3c1fe77ac774741016ccf9cf3a27eb0cf5a04e41b8eb331538b3c0",
+    xmIwtLD:
+      "04d7ef4a2c1fd9bfbc80f43ebb63b7e839c2b43675583bb09e207c1e8cd58bf387b04fc88ca2be87ea4a796b448f747d",
+    designation: "ParseIt",
+  },
+};
+
+function zohoFormFor(product) {
+  const form = ZOHO_PRODUCT_FORMS[product];
+  return {
+    xnQsjsdp: form?.xnQsjsdp || process.env.ZOHO_XNQSJSDP,
+    xmIwtLD: form?.xmIwtLD || process.env.ZOHO_XMIWTLD,
+    designation: form?.designation || product || "",
+  };
+}
+
+async function submitToZohoLead({ name, email, phone, description, product }) {
+  const form = zohoFormFor(product);
+
   const body = new URLSearchParams({
-    xnQsjsdp: process.env.ZOHO_XNQSJSDP,
+    xnQsjsdp: form.xnQsjsdp,
     zc_gad: "",
-    xmIwtLD: process.env.ZOHO_XMIWTLD,
+    xmIwtLD: form.xmIwtLD,
     actionType: "TGVhZHM=",
     returnURL: "null",
     "Last Name": name,
     Email: email,
     Phone: phone,
     Description: description || "",
+    // Hidden Title field the generated form ships with — it tags the lead
+    // in Zoho with the product the request came from.
+    Designation: form.designation,
     // Honeypot field from the generated form — must always stay empty.
     aG9uZXlwb3Q: "",
   });
@@ -101,7 +131,7 @@ app.post("/api/quote", async (req, res) => {
   }
 
   try {
-    await submitToZohoLead({ name, email, phone, description });
+    await submitToZohoLead({ name, email, phone, description, product });
     crmSucceeded = true;
   } catch (err) {
     // Logged safely on the server only — never exposed to the client.
